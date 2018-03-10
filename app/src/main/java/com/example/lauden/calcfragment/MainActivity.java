@@ -1,5 +1,9 @@
 package com.example.lauden.calcfragment;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +19,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Configuration config = getResources().getConfiguration();
+        if(config.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+        }
+
     }
 
 
     public void addToOperation(View view) {
         TextView operation = findViewById(R.id.operation);
-        TextView resultat = findViewById(R.id.resultat);
+        //Check if operation array is empty
         if (!operation.getText().equals("")) {
+            //To prevent having multiples operator next to each other check last character
             char lastchar = operation.getText().charAt(operation.getText().length() - 1);
             if (!isOperator(lastchar)) {
                 switch (view.getId()) {
@@ -37,11 +49,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.divise:
                         operation.append("/");
                         break;
-                    case R.id.somme:
-                        operation.setText("");
-                        String result = "Test";
-                        resultat.setText(result);
-                        break;
                 }
             }
         }
@@ -50,9 +57,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void makeSum(View view){
+        TextView operation = findViewById(R.id.operation);
+        TextView resultat = findViewById(R.id.resultat);
+        if (!operation.getText().equals("")) {
+            resultat.setText("42");
+            operation.setText("");
+        }
 
+        }
     public boolean isOperator(char parChar) {
-        char[] operators = new char[]{'+', '-', '*', '/'};
+        char[] operators = new char[]{'+', '-', '*', '/','='};
         return new String(operators).indexOf(parChar) != -1;
     }
 }

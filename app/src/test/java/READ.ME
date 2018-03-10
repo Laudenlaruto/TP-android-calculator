@@ -1,0 +1,11 @@
+Create an application that does the following :
+
+The first activity shows the calculator from the previous lab, but this time the upper part (textviews for operation and result) and the lower part (the keyboard) are both dynamic fragments displayed inside a "Framelayout". Upon tapping on "=", the position of these two fragments should be interchanged.
+
+1- if we're in portrait mode, display both fragments on top of each other, otherwise side by side in landscape mode.
+
+2- From the options menu, launch another activity that contains one EditText and a fragment containing another EditText with the following constriant : Whatever happens on one of the edittexts, it has to be replicated on the other one. (Communication between activity and fragment)
+
+3- override "onBackPressed" so that it does nothing and make sure to add a back option in the menu in order to launch the calculator again using a custom action "myAction" without creating a new instance of the activity ! investigate the following option in the manifest :
+
+android:launchMode="singleInstance"

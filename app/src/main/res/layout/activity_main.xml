@@ -7,15 +7,17 @@
     android:orientation="vertical"
     tools:context="com.example.lauden.calcfragment.MainActivity">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fragment_top"
-        android:name="com.example.lauden.calcfragment.fragment_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="253dp">
 
-    <fragment
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/fragment_bottom"
-        android:name="com.example.lauden.calcfragment.fragment_keyboard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 </LinearLayout>

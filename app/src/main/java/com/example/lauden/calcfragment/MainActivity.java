@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Configuration config = getResources().getConfiguration();
-        if(config.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        fragmentTransaction.add(R.id.fragment_top, fragment_top.newInstance());
+        fragmentTransaction.add(R.id.fragment_bottom, fragment_keyboard.newInstance());
+        fragmentTransaction.commit();
 
-        }
 
     }
 
@@ -58,11 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void makeSum(View view){
-        TextView operation = findViewById(R.id.operation);
+        CharSequence operation = ((TextView)(findViewById(R.id.operation))).getText();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_top, fragment_keyboard.newInstance());
+        fragmentTransaction.replace(R.id.fragment_bottom, fragment_top.newInstance());
+        fragmentTransaction.commit();
         TextView resultat = findViewById(R.id.resultat);
-        if (!operation.getText().equals("")) {
+        if (!operation.equals("")) {
             resultat.setText("42");
-            operation.setText("");
+            //operation.setText("");
         }
 
         }

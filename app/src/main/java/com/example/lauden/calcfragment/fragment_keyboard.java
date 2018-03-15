@@ -20,4 +20,8 @@ public class fragment_keyboard extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_keyboard, container, false);
     }
+    public static fragment_keyboard newInstance() {
+        fragment_keyboard fragment = new fragment_keyboard();
+        return fragment;
+    }
 }
